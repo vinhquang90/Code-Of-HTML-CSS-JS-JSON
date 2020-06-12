@@ -1,0 +1,49 @@
+{
+    "url": "fptshop.com.vn/gio-hang?v=1",
+    "controls": {
+        "promo": "#txtvoucher",
+        "total": {
+            "selector": "strong.fs-ghrttpri",
+            "rx": "(.*[\\d])"
+        },
+        "coupon": ""
+    },
+    "apply": {
+        "type": "click",
+        "submit": "#btncheckvoucher",
+        "timeout": "1000"
+    },
+    "nativeInjection": {
+        "selector": "div.fs-ghggip > input",
+        "promo": "#txtvoucher",
+        "styles": {
+            "container": {},
+            "text": {
+                "fontSize": "18px",
+                "paddingLeft": "11px !important",
+                "paddingTop": "8px !important",
+                "color": "#333333",
+                "fontWeight": "500"
+            },
+            "hover": {
+                "left": "0",
+                "top": "0"
+            },
+            "wrap": {
+                "top": "0",
+                "right": "0",
+                "bottom": "0",
+                "width": "100%",
+                "left": "38px",
+                "backgroundColor": "#60b15d"
+            },
+            "promoText": {
+                "color": "#fffefe",
+                "fontSize": "18px",
+                "position": "relative",
+                "left": "34px",
+                "top": "8px"
+            }
+        }
+    }
+}

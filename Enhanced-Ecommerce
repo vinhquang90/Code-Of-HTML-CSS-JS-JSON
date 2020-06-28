@@ -1,0 +1,76 @@
+<script>
+jQuery(document).ready(function(){
+    var purchase = window.location.href('order-received').length>0;
+    var checkout = jQuery('body.woocommerce-checkout').length>0;
+    var view_product = jQuery('body.single-product').length>0;
+    var transID = '';
+    var transTot = '';
+    var name = '';
+    var price = '';
+    var id = '';
+        if(purchase){
+            var transID = jQuery("div.entry-content > div > div > ul > li.woocommerce-order-overview__order.order > strong").text();
+            var proPri = parseFloat(jQuery('div.entry-content > div > div > section.woocommerce-order-details > table > tfoot > tr:nth-child(3) > td > span').text().replace(/[₫]/g,''),"");
+            var items = [];
+            var pid = 1;
+            jQuery('.woocommerce-table--order-details tbody .order_item').each(function(){
+                name = jQuery(".product-name",this).text().replace(/[×1]/g, '').trim();
+                price = parseFloat(jQuery(".product-total .amount",this).text().replace(/[₫,]/g, '').trim());
+                items.push({
+                    'id': pid++,
+                    "name": name,
+                    "price": price
+                });
+            });
+                window.dataLayer = window.dataLayer || [];
+                dataLayer.push({
+                    'transactionId': transID,
+                    'transactionTotal': proPri,
+                    'transactionProducts': items
+                });
+        }           
+        else if(checkout){
+            var items = [];
+            var id = 1;
+            jQuery('#order_review.woocommerce-checkout-review-order .shop_table.woocommerce-checkout-review-order-table tbody .cart_item').each(function(){
+                name = jQuery(".product-name",this).text().replace(/[×1]/g,'').trim();
+                price = jQuery (".woocommerce-Price-amount.amount", this).text().replace(/[₫,]/g,'');
+                items.push({
+                    "id": id++,
+                    "name" : name,
+                    "price": price,
+                })
+
+            })
+                window.dataLayer = window.dataLayer || [];
+                dataLayer.push({
+                    'transactionProducts': items
+                });
+        }
+        else if(view_product){
+            var items = [];
+            id = jQuery('.summary .product_meta .sku').text();
+            name = jQuery('.summary .product_title').text();
+            price = parseFloat(jQuery('.summary  .price ins .amount').text().replace(/[₫,]/g, ''));
+            items.push({
+                "id": id,
+                "name" : name,
+                "price": price,
+            })
+                window.dataLayer = window.dataLayer || [];
+                dataLayer.push({
+                    'transactionProducts': items
+            });
+            }
+    });
+jQuery('button[name=add-to-cart]').on('click', function(event){
+        id = jQuery('.summary  .product_meta .sku').text();
+        name = jQuery('.summary  .product_title').text();
+        price = parseFloat(jQuery('.summary  .price ins .amount').text().replace(/[₫,]/g, ''));
+        items.push({
+            'id': id,
+            "name": name,
+            "price": price
+        });
+});
+</script>

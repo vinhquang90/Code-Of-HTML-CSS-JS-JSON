@@ -1,0 +1,27 @@
+contact form 7 of wordpress
+<script>
+document.addEventListener( 'wpcf7mailsent', function( event ) {
+  gtag('event', 'conversion', {'send_to': 'AW-830452611/ejdxCJrz-6kBEIPn_osD'});
+});
+
+document.addEventListener( 'wpcf7mailsent', function( event ) {
+  if(event.detail.contactFormId == 422){
+    gtag('event', 'conversion', {'send_to': ''});
+  }
+}); 
+</script>
+
+form with ajax
+<script>
+(function() {
+    var send = XMLHttpRequest.prototype.send
+    XMLHttpRequest.prototype.send = function() { 
+       this.addEventListener('load', function() {     console.log(this);
+         if(this.responseText =='true' && (this.responseURL.indexOf("https://thegioiduocvinhgia.vn/SubmitArticleQuestions")>-1)){ 
+          gtag('event', 'conversion', {'send_to': ''});
+         }
+       });
+       return send.apply(this, arguments);
+    }
+})()
+</script>

@@ -1,0 +1,48 @@
+hotline click
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+  jQuery('a[href*="tel:"]').on('click', function() {
+       gtag('event', 'conversion', {'send_to': 'AW-951104150/11111111111111'}); // Ads conversion
+       gtag('event', 'click', {'event_category' : 'click_hotline'}); // Analytics event tracking
+       window.dataLayer.push({'event': 'clic_hotline'}); // User dataLayer with GTM
+  });
+}); 
+</script>
+
+page view
+<script>
+  if(window.location.pathname.indexOf("dat-mua-thanh-cong")>-1){
+    gtag('event', 'conversion', {'send_to': 'AW-745036880/pJi4COKE_qkBENC4oeMC'});
+  }
+</script>
+
+tawkto chatbox
+<script>
+var Tawk_API = Tawk_API || {};
+
+Tawk_API.onPrechatSubmit = function(data){
+   gtag('event', 'conversion', {'send_to': 'AW-951104150/11111111111111'}); // Ads conversion
+   gtag('event', 'click', {'event_category' : 'click_hotline'}); // Analytics event tracking
+   window.dataLayer.push({'event': 'chat_started'}); // User dataLayer with GTM
+};
+          
+Tawk_API.onChatStarted = function(){
+  gtag('event', 'conversion', {'send_to': 'AW-951104150/11111111111111'}); // Ads conversion
+       gtag('event', 'click', {'event_category' : 'click_hotline'}); // Analytics event tracking
+       window.dataLayer.push({'event': 'chat_started'}); // User dataLayer with GTM
+};
+
+Tawk_API.onChatStarted = function(){
+  if(Tawk_API.isVisitorEngaged()){
+    gtag('event', 'conversion', {'send_to': 'AW-951104150/11111111111111'}); // Ads conversion
+       gtag('event', 'click', {'event_category' : 'click_hotline'}); // Analytics event tracking
+       window.dataLayer.push({'event': 'chat_started'}); // User dataLayer with GTM
+  }      
+};
+
+Tawk_API.onOfflineSubmit = function(data){
+  gtag('event', 'conversion', {'send_to': 'AW-951104150/11111111111111'}); // Ads conversion
+       gtag('event', 'click', {'event_category' : 'click_hotline'}); // Analytics event tracking
+       window.dataLayer.push({'event': 'chat_started'}); // User dataLayer with GTM
+};
+</script>

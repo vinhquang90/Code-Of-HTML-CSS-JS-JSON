@@ -1,0 +1,119 @@
+// normal gtag here 
+<!-- Global site tag (gtag.js) - Google Ads: 12345678 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-12345678"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-12345678');
+</script>
+
+<script>
+ var dr_event_type/** type{string}*/ = null;
+ var dr_value/** type{number}*/;
+ var dr_items/** type{Array.{id<string>, google_business_vertical<string>}}*/= [];
+ var item /** Object{id<string>, google_business_vertical<string>}*/;
+ var url /** type{string} */= window.location.href;
+ var pathname /** type{string} */= window.location.pathname;
+ var param /** type{string} */= window.location.search;
+ var businessType /** type{string} */= 'retail'; //TODO;
+ /** TODO CHANGE TO YOUR BUSINESS TYPE
+ * retail, education, flights, hotel_rental, jobs, local, real_estate, travel or custom
+ */;
+ var businessType /** type{string} */= 'retail'; 
+
+ /** check which page is the user on
+  * one of the page types: 
+  * 1. view_item 
+  * 2. view_item_list 
+  * 3. view_search_results
+  * 4. add_to_cart 
+  * 5. purchase 
+ */
+ var isItem /** type{boolean}*/ //TODO;
+ var isItemList /** type{boolean}*/ //TODO;
+ var isSearch //TODO;
+ var isBeforeCV  /** type{boolean}*/ //TODO;
+ var isCV /** type{boolean}*/  //TODO;
+ 
+ var shouldSendDynxData /** type{boolean}*/ = isItem||isItemList||isSearch||isBeforeCV||isCV;
+
+if(shouldSendDynxData){
+   
+ /** from here on, check which page the user is on for sending Dynamic Remarketing Data, 
+  * and according to the page type, define data of "items", "value" and "pagetype"
+  */
+ if(isItem){
+   // define page type
+   dr_event_type= "view_item";
+   // get item id 
+   var itemId /** type{string}*/= //TODO;
+   item =  {"id": itemId, "google_business_vertical": businessType;
+   // push to item array
+   dr_items.push(item);
+   // get price
+   dr_value= //TODO;
+        
+ } else if(isItemList){
+   // define page type
+   dr_event_type= "view_item_list";
+   // get item ids
+   var itemIds /**{string[]*/ =//TODO;
+   itemIds.forEach(function(itemId){
+     var itemId /** type{string}*/= //TODO;
+     item =  {"id": itemId, "google_business_vertical": businessType;     
+   });
+   // push to item array
+   dr_items.push(item);
+
+ } else if(isSearch){
+　　// define page type
+   dr_event_type= "view_search_results";
+   // get item ids
+   var itemIds /**{string[]*/ =//TODO;
+   itemIds.forEach(function(itemId){
+     var itemId /** type{string}*/= //TODO;
+     item =  {"id": itemId, "google_business_vertical": businessType;     
+   });
+   // push to item array
+   dr_items.push(item);
+  
+ } else if(isBeforeCV){
+　　// define page type
+   dr_event_type= "view_search_results";
+   // get item ids
+   var itemIds /**{string[]*/ =//TODO;
+   itemIds.forEach(function(itemId){
+     var itemId /** type{string}*/= //TODO;
+     item =  {"id": itemId, "google_business_vertical": businessType;     
+   });
+   // push to item array
+   dr_items.push(item);
+   // get price
+   dr_value= //TODO;
+ 
+ } else if(isPurchase){
+　　// define page type
+   dr_event_type= "purchase";
+   // get item ids
+   var itemIds /**{string[]*/ =//TODO;
+   itemIds.forEach(function(itemId){
+     var itemId /** type{string}*/= //TODO;
+     item =  {"id": itemId, "google_business_vertical": businessType;     
+   });
+   // push to item array
+   dr_items.push(item);
+   // get price
+   dr_value= //TODO;
+ }
+   
+  // Finally,  send the dynamic remarketing data
+  gtag('event', dr_event_type, {
+    // price in number
+   'value': dr_value,
+   // an array of itmes the user is seeing 
+   'items': dr_items
+  });
+}
+</script>

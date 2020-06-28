@@ -1,0 +1,78 @@
+*** This event measures when a user visits a product page.
+<script>
+dataLayer.push({
+  'dr_event_type' : 'view_item',
+  'dr_value' : 500,   // product price
+  'dr_items' : [{
+      'id': 'replace with value',   // should be the same as the id in Google Merchant Center, example: 	CM_C06GGTN-11111111111-only-Black
+      'google_business_vertical': 'retail'
+    }],
+  'event':'dynamic_remarketing'
+});
+</script>
+
+
+***	This event measures when a user adds an item to the shopping cart.
+<script>
+dataLayer.push({
+  'dr_event_type' : 'add_to_cart',
+  'dr_value' : 500,   // cart total
+  'dr_items' : [{
+      'id': 'replace with value',   // should be the same as id in Google Merchant Center, example: 	CM_C06GGTN-11111111111-only-Black
+      'google_business_vertical': 'retail'
+    },
+    {
+     'id': 'replace with value',   // should be the same as id in Google Merchant Center, example: 	CM_C06GGTN-11111111111-only-Black
+      'google_business_vertical': 'retail'
+    }
+    ],
+  'event':'dynamic_remarketing'
+});
+</script>
+
+
+***	This event measures purchases.
+<script>
+dataLayer.push({
+  'dr_event_type' : 'purchase',
+  'dr_value' : 500,  // purchase  total
+  'dr_items' : [{
+     'id': 'replace with value',   // should be the same as id in Google Merchant Center, example: 	CM_C06GGTN-11111111111-only-Black
+      'google_business_vertical': 'retail'
+    }],
+  'event':'dynamic_remarketing'
+});
+</script>
+
+*** This event measures when a user visits a search results page.
+<script>
+dataLayer.push({
+  'dr_event_type' : 'view_search_results',
+  'dr_value' : 500,  //  total or this line can be removed for search result
+  'dr_items' : [{
+     'id': 'replace with value',   // should be the same as id in Google Merchant Center, example: 	CM_C06GGTN-11111111111-only-Black
+      'google_business_vertical': 'retail'
+    }],
+  'event':'dynamic_remarketing'
+});
+</script>
+
+
+***	This event measures when a user visits a category page.
+<script>
+dataLayer.push({
+  'dr_event_type' : 'view_item_list',
+  'dr_value' : 500,  //  total or this line can be removed for category page
+  'dr_items' : [{
+      'id': 'replace with value',   // should be the same as id in Google Merchant Center, example: 	CM_C06GGTN-11111111111-only-Black
+      'google_business_vertical': 'retail'
+    }],
+  'event':'dynamic_remarketing'
+});
+</script>
+
+
+***Other pages
+<script>
+  dataLayer.push({'event':'remarketing'});
+</script>

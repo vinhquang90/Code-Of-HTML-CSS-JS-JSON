@@ -1,0 +1,32 @@
+purchase conversion with conversion value
+***** Use Gtag ****
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+  if(window.location.pathname.indexOf("/order-received/")>-1){
+    var purId = jQuery('li.woocommerce-order-overview__order.order > strong').text();
+    var purTotal =  parseFloat(jQuery('li.woocommerce-order-overview__total.total > strong > span').text().replace(/[^0-9]/g,''));
+      gtag('event', 'conversion', {
+          'send_to': 'AW-728201875/tjGYCPqUvqcBEJP1ndsC',
+          'value': purTotal,
+          'currency': 'VND',
+          'transaction_id': purId
+      });
+  }
+});
+</script>
+
+
+***** Use dataLayer with GTM ****
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+  if(window.location.pathname.indexOf("/order-received/")>-1){
+    var purId = jQuery('li.woocommerce-order-overview__order.order > strong').text();
+    var purTotal =  parseFloat(jQuery('li.woocommerce-order-overview__total.total > strong > span').text().replace(/[^0-9]/g,''));
+      dataLayer.push({
+     'purId': purId,
+     'purTotal': purTotal,
+     'event': 'purchase-completed'
+    });
+  }
+});
+</script>

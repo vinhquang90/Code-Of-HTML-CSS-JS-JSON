@@ -1,0 +1,23 @@
+<script>
+var conUrl = window.location.href;
+if(conUrl.indexOf("product/checkout.html")>-1){
+    localStorage.purchaseTotal = parseFloat(jQuery('.total-order').text().replace(/[^0-9]/g,''));
+}
+
+if (conUrl.indexOf("dat-hang-thanh-cong.html")>-1) {
+	var purTotal = Number(localStorage.getItem('purchaseTotal'));
+  
+  if (purTotal > 0 ) {
+    var idStr = conUrl.split('order_id=');
+    var purId = idStr[idStr.length-1].replace('=','');
+    dataLayer.push({
+     'purId': purId,
+     'purTotal': purTotal,
+     'event': 'purchase_completed'
+    });
+    localStorage.removeItem("purchaseTotal");
+    
+  }
+   
+}
+</script>

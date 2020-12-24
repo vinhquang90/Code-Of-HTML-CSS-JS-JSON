@@ -1,0 +1,23 @@
+public class Main{
+public static void main(String args[]){
+CheckSNT();
+}
+public static void CheckSNT(){
+int[] dayso = {5,6,9}; // viết tắt thay cho new int[]{ 5,6,9}
+int i, j; // khởi tạo ở đây nếu ko sẽ phải viết int j trong for
+for(i = 0; i < dayso.length; i++){ // for 1 chạy từng i thì for 2 và if chạy ngay
+boolean SNT = true; // chỉ cần dùng boolean trong for 1 nên declare trong for 1
+for(j = 2; j < dayso[i]; j++){
+if(dayso[i] % j == 0){
+SNT = false;
+break; // j chạy từ 2 lên, cứ dính 1 số là break luôn cho tối ưu code
+}
+} // for 2
+if(SNT){ // if này chạy ngay sau mỗi j của loop 2, mỗi lần for 2 chạy nhận nhiều true/false ở đây
+System.out.println(dayso[i] + " True");
+}else{
+System.out.println(dayso[i] + " False");
+}
+} // for 1
+} // method
+} // class

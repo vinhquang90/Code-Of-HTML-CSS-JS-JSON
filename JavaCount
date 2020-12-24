@@ -1,0 +1,27 @@
+public class Main{
+
+public static boolean isPrime(int conSo){
+for(int i = 2; i < conSo; i++){
+if(conSo % i == 0){
+return false;
+}
+}
+return true;
+}
+
+public static int demSoPrime(int[] cacConSo){
+int count = 0;
+for(int i : cacConSo){ // for-each in ra các value và nhét vào biến i
+if(isPrime(i)){
+count += 1;
+}
+}
+return count;
+}
+
+public static void main(String args []){
+int[] cacConSo = {5,6,9};
+int ketQua = demSoPrime(cacConSo);
+System.out.println("Ket Qua La: " + ketQua);
+}
+}

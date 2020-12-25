@@ -14,7 +14,7 @@ return true;
 }
 
 public static void inradayso(int[] dayso){
-for(int i = 0; i < dayso.length; i++){
+for(int i = 0; i < dayso.length; i++){ // Dùng for-each bị lỗi ArrayIndexOutOfBoundsException
 
 if(isPrime(i)){
 System.out.println("True");
